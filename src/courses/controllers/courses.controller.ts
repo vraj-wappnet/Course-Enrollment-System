@@ -18,6 +18,7 @@ import {
   ApiResponse,
   ApiParam,
   ApiQuery,
+  ApiBearerAuth,
 } from '@nestjs/swagger';
 import { Course } from '../entities/course.entity';
 import { EnrollmentStatus } from '../entities/course.entity';
@@ -25,6 +26,7 @@ import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
 
 @ApiTags('courses')
 @Controller('courses')
+@ApiBearerAuth()
 @UseGuards(JwtAuthGuard) // Protect all routes in this controller
 export class CoursesController {
   constructor(private readonly coursesService: CoursesService) {}
